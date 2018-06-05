@@ -1,11 +1,13 @@
 import liga.*
 import equipos.*
+import representantes.*
 
 class Jugador{
 	var potencia
 	var habilidadEnLosPases
 	var visionDeJuego
 	var visionDeCompaneros
+	var duenoDePase
 	
 	method asignarPotencia(_potencia){
 		potencia = _potencia
@@ -18,6 +20,9 @@ class Jugador{
 	}
 	method habilidad(){
 		return habilidadEnLosPases
+	}
+	method presicion(){
+		return ( 3* self.valorIntrinseco() + self.habilidad())
 	}
 	method asignarVisionDeJuego(_vision){
 		visionDeJuego = _vision
@@ -35,7 +40,24 @@ class Jugador{
 		return visionDeJuego + visionDeCompaneros
 	}
 	method valorIntrinseco()
+	
+	method asignarDuenoDePase(_dueno){
+		duenoDePase = _dueno
+	}
+	method duenoDePase(){
+		return duenoDePase
+	}
+	method riesgoLaboral(){
+		return duenoDePase.prefiereDescartar(self)
+	}
 }
+
+
+
+
+
+
+//===============SUBCLASES================
 class Atacante inherits Jugador{
 	var anotacion
 	
