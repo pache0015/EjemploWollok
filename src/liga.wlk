@@ -15,3 +15,10 @@ object liga{
 
 
 
+// REPO DE CARLOS A BAJAR: por mail
+
+// jugador ==== method posiblesDestinos() = self.liga().integrantes().filter({int => int.leInteresa(self)})
+// 		method liga() =duenoDelPase().liga()
+
+// Liga === var representantes = #{}
+			//method integrantes() = return equipos + representantes
