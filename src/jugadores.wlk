@@ -50,6 +50,9 @@ class Jugador{
 	method riesgoLaboral(){
 		return duenoDePase.prefiereDescartar(self)
 	}
+	method esMejorQue(_jugador){
+		return self.potencia() > _jugador.potencia()
+	}
 }
 
 

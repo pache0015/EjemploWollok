@@ -12,5 +12,8 @@ class Representante{
 	method cumplePedido(_jugador){
 		return pedidos.any({pedido => pedido.cumpleJugadorParaNoDescarte(_jugador)})
 	}
+	method leInteresa(_jugador){
+		return pedidos.any({pedido => pedido.cumpleParaInteres(_jugador)})
+	}
 	
 }
