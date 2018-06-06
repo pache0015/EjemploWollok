@@ -39,6 +39,10 @@ class Equipo{
 		return mejor >= 3 
 	}
 }
+
+
+// ==================== SUBCLASES====================
+
 class Lirico inherits Equipo{
 	
 	override method prefiereDescartar(_jugador){
