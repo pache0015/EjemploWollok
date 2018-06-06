@@ -10,7 +10,10 @@ class PedidoPotencia{
 		valorMin = _valor
 	}
 	method cumpleJugadorParaNoDescarte(_jugador){
-		return valorMin < _jugador.potencia()
+		return !self.cumpleParaInteres(_jugador)
+	}
+	method cumpleParaInteres(_jugador){
+		return _jugador.potencia() >= valorMin
 	}
 }
 class PedidoVision{
@@ -20,7 +23,10 @@ class PedidoVision{
 		valorMin = _valor
 	}
 	method cumpleJugadorParaNoDescarte(_jugador){
-		return valorMin < _jugador.potencia()
+		return !self.cumpleParaInteres(_jugador)
+	}
+	method cumpleParaInteres(_jugador){
+		return _jugador.visionGeneral() >= valorMin
 	}
 }
 class PedidoCombinado{
@@ -34,6 +40,9 @@ class PedidoCombinado{
 		valorMax = _valor
 	}
 	method cumpleJugadorParaNoDescarte(_jugador){
-		return valorMin < _jugador.habilidad()+_jugador.presicion() < valorMax
+		return !self.cumpleParaInteres(_jugador)
+	}
+	method cumpleParaInteres(_jugador){
+		return valorMin < _jugador.habilidad()+_jugador.presicion() + _jugador.visionGeneral() < valorMax
 	}
 }
