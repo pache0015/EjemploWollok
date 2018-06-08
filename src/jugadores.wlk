@@ -8,6 +8,7 @@ class Jugador{
 	var visionDeJuego
 	var visionDeCompaneros
 	var duenoDePase
+	var property equipo = null
 	
 	method asignarPotencia(_potencia){
 		potencia = _potencia
@@ -52,6 +53,9 @@ class Jugador{
 	}
 	method esMejorQue(_jugador){
 		return self.potencia() > _jugador.potencia()
+	}
+	method posiblesDestinos(){
+		return self.equipo().liga().integrantes().filter({integrante => integrante.leInteresa(self)})
 	}
 }
 

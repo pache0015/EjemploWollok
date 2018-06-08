@@ -4,12 +4,16 @@ import representantes.*
 
 object liga{
 	var equipos = #{}
+	var representantes = #{}
 	
 	method equipoConMasVision(){
 		return self.calcularVisionDeEquipos()
 	}
 	method calcularVisionDeEquipos(){
 		return equipos.max({equipo => equipo.vision()})
+	}
+	method integrantes(){
+		return equipos + representantes
 	}
 }
 

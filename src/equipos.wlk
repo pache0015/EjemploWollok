@@ -4,6 +4,7 @@ import representantes.*
 
 class Equipo{
 	var jugadores = #{}
+	var property liga = null
 	
 	method potencia(){
 		return self.calcularPotencia()
@@ -37,6 +38,35 @@ class Equipo{
 		jugadores.forEach({jugador => if (!_jugador.esMejorQue(jugador)){mejor += 1}})
 		
 		return mejor >= 3 
+	}
+	method puedeTratarConRepresentante(_representante){
+		return self.interesAlRepresentanteDelEquipo(_representante)
+	}
+	method interesAlRepresentanteDelEquipo(_representante){
+		var cantJugadoresDeInteresParaRepresentanteDeEquipo = 0
+		
+		self.jugadoresDeInteres().forEach({jugador=> if (_representante.leInteresa(jugador)){cantJugadoresDeInteresParaRepresentanteDeEquipo += 1}})
+		
+		return cantJugadoresDeInteresParaRepresentanteDeEquipo >= 2
+	}
+	method jugadoresDeInteres(){
+		var jugadoresDeInt = #{}
+		jugadores.forEach({jugador => if (self.leInteresa(jugador)){jugadoresDeInt.add(jugador)}})
+		return jugadoresDeInt
+	}
+	method equilibrado(){
+		return self.alMenosCincoLeInteresan() and self.prefiereDescartarNoMasDeDos()
+	}
+	method alMenosCincoLeInteresan(){
+		return self.jugadoresDeInteres().size()>=5
+	}
+	method prefiereDescartarNoMasDeDos(){
+		return self.jugadoresADescartar().size() <= 2
+	}
+	method jugadoresADescartar(){
+		var jugadoresADescartar = #{}
+		jugadores.forEach({jugador => if (self.prefiereDescartar(jugador)){jugadoresADescartar.add(jugador)}})
+		return jugadoresADescartar
 	}
 }
 
